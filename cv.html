@@ -222,14 +222,9 @@
     .sig-name { font-style: italic; font-size: .82rem; font-weight: 600; color: #1e3a5f; margin-bottom: 2px; }
 
     /* ── PRINT ── */
-    /* Fields that belong on a printed/PDF CV handed to an employer, but must not
-       sit on a public web page that Google indexes. Hidden on screen, shown on print. */
-    .print-only { display: none; }
-
     @media print {
       body { background: #fff; font-size: 11.5px; }
       .download-bar { display: none; }
-      .print-only { display: flex; }
       .cv-wrap { margin: 0; box-shadow: none; border-radius: 0; max-width: 100%; }
       .cv-header { padding: 20px 28px; }
       .cv-body { padding: 20px 28px; }
@@ -414,11 +409,10 @@
     </div>
 
     <!-- Personal Information
-         Bangladeshi employers expect these fields, so they are back on the page.
-         The NID row is deliberately .print-only: it appears when this CV is printed or
-         saved as PDF for an employer, but never renders on the public web page, since an
-         NID number in a Google-indexed page is a live fraud vector (SIM re-registration,
-         bKash and bank KYC). Do not remove the print-only class to "fix" it not showing. -->
+         Bangladeshi employers expect these fields, so they are on the page. NID is
+         deliberately not here in any form: an NID number on a public, Google-indexed page
+         is directly usable for SIM re-registration and bKash/bank KYC. Give it privately
+         to an employer who asks, never on the live site. -->
     <div class="sec">
       <div class="sec-head">Personal Information</div>
       <div class="info-grid">
@@ -431,7 +425,6 @@
         <div class="info-row"><span class="info-label">Religion</span><span class="info-val">Islam</span></div>
         <div class="info-row"><span class="info-label">Blood Group</span><span class="info-val">O+</span></div>
         <div class="info-row"><span class="info-label">Nationality</span><span class="info-val">Bangladeshi (By Birth)</span></div>
-        <div class="info-row print-only"><span class="info-label">NID No.</span><span class="info-val">XXXXXXXXXX</span></div>
         <div class="info-row"><span class="info-label">Permanent Address</span><span class="info-val">Vill: Abu Bokkorpur, P.O: Char Fasson, P.S: Char Fasson, Dist: Bhola</span></div>
         <div class="info-row"><span class="info-label">Present Address</span><span class="info-val">House: 10, Road: 19/2, Rupnagar R/A, Mirpur, Dhaka-1216</span></div>
       </div>
