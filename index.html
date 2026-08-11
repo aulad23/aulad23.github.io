@@ -3,10 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <title>Aulad Hossain — Portfolio</title>
+  <title>Aulad Hossain — Automation Engineer &amp; Python Developer</title>
+  <meta name="description" content="Aulad Hossain — Associate Automation Engineer at Accord Tech Solutions. Python developer building production web scrapers, Playwright automation, and AI agents. 60+ vendor sites scraped, 11 live projects on GitHub." />
+  <meta name="author" content="Aulad Hossain" />
+  <meta name="keywords" content="Aulad Hossain, Automation Engineer, Python Developer, Web Scraping, Playwright, Selenium, AI Agent, Bangladesh" />
+  <link rel="canonical" href="https://aulad23.github.io/portfolio/" />
+
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://aulad23.github.io/portfolio/" />
+  <meta property="og:title" content="Aulad Hossain — Automation Engineer &amp; Python Developer" />
+  <meta property="og:description" content="Python developer building production web scrapers, Playwright automation, and AI agents. Currently Associate Automation Engineer at Accord Tech Solutions." />
+  <meta property="og:image" content="https://aulad23.github.io/portfolio/image/20230423_214741.jpg" />
+  <meta property="og:image:alt" content="Aulad Hossain" />
+  <meta property="og:site_name" content="Aulad Hossain Portfolio" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aulad Hossain — Automation Engineer &amp; Python Developer" />
+  <meta name="twitter:description" content="Python developer building production web scrapers, Playwright automation, and AI agents." />
+  <meta name="twitter:image" content="https://aulad23.github.io/portfolio/image/20230423_214741.jpg" />
+
+  <!-- Favicon: "AH" monogram, inline SVG (no extra request) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='32' y='44' font-family='Verdana,sans-serif' font-size='30' font-weight='bold' fill='%2360a5fa' text-anchor='middle'%3EAH%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="image/20230423_214741.jpg" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Structured data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aulad Hossain",
+    "alternateName": "MD. Aulad Hossain",
+    "url": "https://aulad23.github.io/portfolio/",
+    "image": "https://aulad23.github.io/portfolio/image/20230423_214741.jpg",
+    "jobTitle": "Associate Automation Engineer",
+    "worksFor": { "@type": "Organization", "name": "Accord Tech Solutions" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Prime University" },
+    "knowsAbout": ["Python", "Web Scraping", "Playwright", "Selenium", "AI Agents", "Test Automation", "Flask", "FastAPI"],
+    "sameAs": [
+      "https://github.com/aulad23",
+      "https://www.linkedin.com/in/aulad-hossain-663a16391/",
+      "https://www.facebook.com/mdaulad.hossain.3382/"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -169,15 +213,6 @@
       object-fit: cover; object-position: center 20%;
       display: block;
     }
-    .photo-overlay {
-      position: absolute; inset: 0; border-radius: 20px;
-      background: rgba(10,15,30,.7);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-      opacity: 0; transition: opacity .25s; pointer-events: none;
-    }
-    .hero-img-inner-wrap:hover .photo-overlay { opacity: 1; }
-    .photo-overlay span { color: var(--blue); font-size: .75rem; font-weight: 600; }
-
     .hero-text { flex: 1; }
     .hero-text h1 {
       font-family: 'Space Grotesk', sans-serif;
@@ -441,6 +476,8 @@
 
     /* ── CONTACT ── */
     #contact .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    /* Honeypot — invisible to people, still fillable by spam bots */
+    .cf-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
     .contact-form-wrap {
       margin-top: 32px;
       background: rgba(17,24,39,.7);
@@ -518,61 +555,6 @@
       color: var(--muted); font-size: .82rem;
     }
     footer span { color: var(--blue); }
-
-    /* ── PASSWORD MODAL ── */
-    .modal-overlay {
-      position: fixed; inset: 0; z-index: 999;
-      background: rgba(0,0,0,.7); backdrop-filter: blur(6px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity .25s;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal-box {
-      background: var(--card); border: 1px solid rgba(56,189,248,.25);
-      border-radius: 16px; padding: 32px 28px; width: 320px;
-      box-shadow: 0 24px 60px rgba(0,0,0,.5);
-      transform: translateY(20px); transition: transform .25s;
-    }
-    .modal-overlay.open .modal-box { transform: translateY(0); }
-    .modal-box h3 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1rem;
-      font-weight: 700; margin-bottom: 6px;
-    }
-    .modal-box p { font-size: .82rem; color: var(--text2); margin-bottom: 18px; }
-    .modal-input {
-      width: 100%; padding: 10px 14px; border-radius: 8px;
-      background: var(--navy); border: 1px solid var(--border);
-      color: var(--text); font-size: .9rem; outline: none;
-      transition: border-color .2s; margin-bottom: 8px;
-    }
-    .modal-input:focus { border-color: var(--blue); }
-    .modal-error {
-      font-size: .78rem; color: #f87171; min-height: 1.1em;
-      margin-bottom: 14px; display: block;
-    }
-    .modal-btns { display: flex; gap: 10px; }
-    .modal-btns .btn { flex: 1; justify-content: center; font-size: .85rem; padding: 9px; }
-
-    /* ── SOURCE PICKER MODAL ── */
-    .source-box { width: 300px; }
-    .source-btns { display: flex; gap: 14px; margin-bottom: 10px; }
-    .source-btn {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      gap: 10px; padding: 22px 10px; border-radius: 14px;
-      background: var(--navy); border: 1px solid var(--border);
-      color: var(--text); cursor: pointer; transition: border-color .2s, background .2s;
-      font-size: .85rem; font-weight: 600;
-    }
-    .source-btn:hover { border-color: var(--blue); background: rgba(56,189,248,.06); color: var(--blue); }
-    .source-btn svg { opacity: .85; }
-
-    /* ── PHOTO PREVIEW MODAL ── */
-    #preview-modal .modal-box { width: 300px; text-align: center; }
-    #preview-modal .preview-img {
-      width: 130px; height: 130px; border-radius: 50%;
-      object-fit: cover; border: 3px solid var(--blue);
-      margin: 0 auto 18px; display: block;
-    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 820px) {
@@ -810,14 +792,8 @@
 <section id="hero">
   <div class="hero-img-wrap">
     <div class="hero-img-ring"></div>
-    <div class="hero-img-inner-wrap" onclick="openPhotoModal()">
-      <img id="profile-photo" src="image/20230423_214741.jpg" alt="Aulad Hossain" />
-      <div class="photo-overlay">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4z"/><path d="M9 3L7.17 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.17L15 3H9zm3 14a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg>
-        <span>Change Photo</span>
-      </div>
-      <input type="file" id="camera-input"  accept="image/*" capture="environment" style="display:none" onchange="changePhoto(event)" />
-      <input type="file" id="gallery-input" accept="image/*" style="display:none" onchange="changePhoto(event)" />
+    <div class="hero-img-inner-wrap">
+      <img id="profile-photo" src="image/20230423_214741.jpg" alt="Aulad Hossain — Associate Automation Engineer" width="800" height="1129" fetchpriority="high" />
     </div>
   </div>
 
@@ -841,16 +817,16 @@
       </a>
     </div>
     <div class="social-row">
-      <a class="soc" href="https://www.linkedin.com/in/aulad-hossain-663a16391/" target="_blank" title="LinkedIn">
+      <a class="soc" href="https://www.linkedin.com/in/aulad-hossain-663a16391/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile of Aulad Hossain">
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <a class="soc" href="https://www.facebook.com/mdaulad.hossain.3382/" target="_blank" title="Facebook">
+      <a class="soc" href="https://www.facebook.com/mdaulad.hossain.3382/" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook profile of Aulad Hossain">
         <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </a>
-      <a class="soc" href="https://github.com/aulad23" target="_blank" title="GitHub">
+      <a class="soc" href="https://github.com/aulad23" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub profile of Aulad Hossain">
         <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-      <a class="soc" href="https://wa.me/8801408749236" target="_blank" title="WhatsApp" style="border-color:rgba(37,211,102,.3);color:#25D366;">
+      <a class="soc" href="https://wa.me/8801408749236" target="_blank" rel="noopener" title="WhatsApp" aria-label="Message Aulad Hossain on WhatsApp" style="border-color:rgba(37,211,102,.3);color:#25D366;">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
       </a>
     </div>
@@ -873,11 +849,11 @@
       <div class="stat-label">Demo Data Vendors</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">9</div>
+      <div class="stat-num" id="stat-tenure">13</div>
       <div class="stat-label">Months at Accord Tech</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">10+</div>
+      <div class="stat-num">11</div>
       <div class="stat-label">Live Projects on GitHub</div>
     </div>
   </div>
@@ -941,7 +917,7 @@
             <div class="tl-role">Associate Automation Engineer</div>
             <div class="tl-company">Accord Tech Solutions</div>
           </div>
-          <span class="tl-date">Jul 2025 – Present · 9 Months</span>
+          <span class="tl-date">Jul 2025 – Present · <span id="tl-tenure">1 yr 1 mo</span></span>
         </div>
         <ul class="tl-desc">
           <li>Built and maintain SD_SKU_Agent — scrapes product data from 60+ furniture brand websites with minimal manual work.</li>
@@ -966,7 +942,7 @@
       </div>
       <div class="edu-info">
         <h3>BSc in Computer Science &amp; Engineering</h3>
-        <p>Prime University, Dhaka</p>
+        <p>Prime University, Dhaka · 2024 – 2028 (expected)</p>
         <span class="edu-badge r">Running</span>
       </div>
     </div>
@@ -976,7 +952,7 @@
       </div>
       <div class="edu-info">
         <h3>Diploma in Engineering</h3>
-        <p>Govt. Graphic Arts Institute, Dhaka</p>
+        <p>Govt. Graphic Arts Institute, Dhaka · 2024</p>
         <span class="edu-badge d">Completed</span>
       </div>
     </div>
@@ -986,7 +962,7 @@
       </div>
       <div class="edu-info">
         <h3>SSC</h3>
-        <p>Kamal Ahemad Mojumder School and College</p>
+        <p>Kamal Ahmed Mojumder School and College · 2019</p>
         <span class="edu-badge d">Completed</span>
       </div>
     </div>
@@ -999,15 +975,19 @@
   <h2 class="sec-title">Skills</h2>
   <div class="skill-cloud">
     <div class="skill-pill"><span class="sp-icon">🐍</span> Python <span class="sp-level adv">Advanced</span></div>
+    <div class="skill-pill"><span class="sp-icon">🎭</span> Playwright <span class="sp-level adv">Advanced</span></div>
     <div class="skill-pill"><span class="sp-icon">🤖</span> Selenium <span class="sp-level adv">Advanced</span></div>
     <div class="skill-pill"><span class="sp-icon">🕸️</span> Web Scraping <span class="sp-level adv">Advanced</span></div>
     <div class="skill-pill"><span class="sp-icon">🧠</span> AI Agent Systems <span class="sp-level mid">Intermediate</span></div>
+    <div class="skill-pill"><span class="sp-icon">🌶️</span> Flask <span class="sp-level mid">Intermediate</span></div>
+    <div class="skill-pill"><span class="sp-icon">⚡</span> FastAPI <span class="sp-level mid">Intermediate</span></div>
+    <div class="skill-pill"><span class="sp-icon">🐼</span> Pandas <span class="sp-level mid">Intermediate</span></div>
     <div class="skill-pill"><span class="sp-icon">🔌</span> API Integration <span class="sp-level mid">Intermediate</span></div>
     <div class="skill-pill"><span class="sp-icon">🏗️</span> OOP Design <span class="sp-level mid">Intermediate</span></div>
     <div class="skill-pill"><span class="sp-icon">🐙</span> Git &amp; GitHub <span class="sp-level mid">Intermediate</span></div>
     <div class="skill-pill"><span class="sp-icon">🧪</span> Test Automation <span class="sp-level mid">Intermediate</span></div>
     <div class="skill-pill"><span class="sp-icon">🎨</span> HTML &amp; CSS <span class="sp-level mid">Intermediate</span></div>
-    <div class="skill-pill"><span class="sp-icon">🗄️</span> SQL <span class="sp-level beg">Beginner</span></div>
+    <div class="skill-pill"><span class="sp-icon">🗄️</span> SQL <span class="sp-level mid">Intermediate</span></div>
     <div class="skill-pill"><span class="sp-icon">🐧</span> Linux / CLI <span class="sp-level mid">Intermediate</span></div>
   </div>
 </section>
@@ -1037,7 +1017,7 @@
         <span class="tag">Python</span><span class="tag">Playwright</span>
         <span class="tag">Async</span><span class="tag">50+ Vendors</span>
       </div>
-      <a class="proj-link" href="https://github.com/aulad23/phase-05-AU" target="_blank">
+      <a class="proj-link" href="https://github.com/aulad23/phase-05-AU/tree/master/AVS%20agent-20260507T065820Z-3-001/AVS%20agent" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         View on GitHub
       </a>
@@ -1049,7 +1029,7 @@
         <span class="tag">Python</span><span class="tag">AI Agent</span>
         <span class="tag">Selenium</span><span class="tag">Shopify API</span>
       </div>
-      <a class="proj-link" href="https://github.com/aulad23/phase-05-AU" target="_blank">
+      <a class="proj-link" href="https://github.com/aulad23/phase-05-AU/tree/master/SD_SKU_Agent" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         View on GitHub
       </a>
@@ -1193,7 +1173,7 @@
       <div class="c-info">
         <h4>GitHub</h4>
         <a href="https://github.com/aulad23" target="_blank">github.com/aulad23</a>
-        <p style="font-size:.78rem;color:var(--muted);margin-top:2px;">25+ public repositories</p>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:2px;"><span id="gh-repo-count">36</span> public repositories</p>
       </div>
     </div>
     <div class="c-box">
@@ -1217,11 +1197,10 @@
   <div class="contact-form-wrap">
     <h3>Send Me a Message</h3>
     <p class="cf-sub">Fill out the form below and I'll get back to you as soon as possible.</p>
-    <form id="contact-form" action="https://formsubmit.co/auladh427@gmail.com" method="POST" novalidate>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="Portfolio Contact — New Message">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://aulad23.github.io/portfolio/">
+    <form id="contact-form" method="POST" novalidate>
+      <input type="hidden" name="subject" value="Portfolio Contact — New Message">
+      <!-- Honeypot: real people never see or fill this; bots do -->
+      <input type="checkbox" name="botcheck" class="cf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="cf-row">
         <div class="cf-group">
           <label for="cf-name">Name</label>
@@ -1248,96 +1227,12 @@
 
 </div><!-- /wrap -->
 
-<!-- SOURCE PICKER MODAL -->
-<div class="modal-overlay" id="source-modal">
-  <div class="modal-box source-box">
-    <h3>Select Source</h3>
-    <p>How would you like to add your photo?</p>
-    <div class="source-btns">
-      <button class="source-btn" onclick="openCamera()">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15.2A3.2 3.2 0 1 0 12 8.8a3.2 3.2 0 0 0 0 6.4z"/><path d="M9 3L7.17 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.17L15 3H9zm3 14a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg>
-        <span>Camera</span>
-      </button>
-      <button class="source-btn" onclick="openGallery()">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM5 17l3.5-4.5 2.5 3.01L14.5 11l4.5 6H5z"/></svg>
-        <span>Gallery</span>
-      </button>
-    </div>
-    <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px;font-size:.85rem;padding:9px" onclick="closeSourceModal()">Cancel</button>
-  </div>
-</div>
-
-<!-- PASSWORD MODAL -->
-<div class="modal-overlay" id="photo-modal">
-  <div class="modal-box">
-    <h3>🔒 Admin Access</h3>
-    <p>Enter your password to change the profile photo.</p>
-    <input class="modal-input" type="password" id="modal-pass" placeholder="Password" onkeydown="if(event.key==='Enter')verifyPass()" />
-    <span class="modal-error" id="modal-err"></span>
-    <div class="modal-btns">
-      <button class="btn btn-outline" onclick="closePhotoModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="verifyPass()">Confirm</button>
-    </div>
-  </div>
-</div>
-
-<!-- PHOTO PREVIEW MODAL -->
-<div class="modal-overlay" id="preview-modal">
-  <div class="modal-box">
-    <h3>📸 New Photo</h3>
-    <p>Save this as your profile photo?</p>
-    <img id="preview-img" class="preview-img" src="" alt="Preview" />
-    <div class="modal-btns">
-      <button class="btn btn-outline" onclick="cancelPhotoPreview()">Cancel</button>
-      <button class="btn btn-primary" onclick="savePhotoPreview()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- PHOTO UPLOAD STATUS -->
-<div id="photo-status" style="
-  display:none; position:fixed; bottom:24px; right:24px; z-index:999;
-  background:var(--card); border:1px solid rgba(56,189,248,.3);
-  border-radius:12px; padding:14px 20px; font-size:.85rem;
-  box-shadow:0 8px 32px rgba(0,0,0,.4); max-width:280px;
-  color:var(--text); backdrop-filter:blur(12px);
-"></div>
-
 <!-- FOOTER -->
 <footer>
-  &copy; 2026 <span>Aulad Hossain</span>. Built by hand, not by template.
+  &copy; <span id="footer-year">2026</span> <span>Aulad Hossain</span>. Built by hand, not by template.
 </footer>
 
 <script>
-  /* ── Contact Form ── */
-  document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('cf-btn');
-    const result = document.getElementById('cf-result');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    result.className = 'cf-msg';
-    result.style.display = 'none';
-    const data = new FormData(this);
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
-      const json = await res.json();
-      if (json.success) {
-        result.textContent = 'Message sent! I will get back to you soon.';
-        result.className = 'cf-msg success';
-        this.reset();
-      } else {
-        result.textContent = 'Something went wrong. Please try again or email me directly.';
-        result.className = 'cf-msg error';
-      }
-    } catch {
-      result.textContent = 'Network error. Please email me at auladh427@gmail.com.';
-      result.className = 'cf-msg error';
-    }
-    btn.disabled = false;
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
-  });
-
   /* ── Mobile menu ── */
   function toggleMenu() {
     const btn  = document.getElementById('hamburger');
@@ -1350,202 +1245,42 @@
     document.getElementById('mobile-menu').classList.remove('open');
   }
 
-  /* ── Config ── */
-  const ADMIN_PASS    = 'aulad@2026';
-  const GH_REPO       = 'aulad23/portfolio';
-  const GH_IMG_PATH   = 'image/20230423_214741.jpg';
-  const GH_PAGES_BASE = 'https://aulad23.github.io/portfolio';
+  /* ── Auto-updating figures: tenure, repo count, footer year ── */
+  const JOB_START = new Date(2025, 6, 1); // Jul 2025 — Accord Tech Solutions
 
-  /* ── Photo status toast ── */
-  function showPhotoStatus(msg, color) {
-    const el = document.getElementById('photo-status');
-    el.textContent = msg;
-    el.style.display = 'block';
-    el.style.borderColor = color === 'green' ? 'rgba(52,211,153,.4)' : color === 'red' ? 'rgba(248,113,113,.4)' : 'rgba(56,189,248,.3)';
-    el.style.color = color === 'green' ? '#34d399' : color === 'red' ? '#f87171' : 'var(--text)';
-    clearTimeout(el._t);
-    el._t = setTimeout(() => { el.style.display = 'none'; }, 5000);
-  }
+  (function autoFigures() {
+    const now = new Date();
+    let months = (now.getFullYear() - JOB_START.getFullYear()) * 12
+               + (now.getMonth() - JOB_START.getMonth());
+    if (now.getDate() < JOB_START.getDate()) months--;
+    months = Math.max(months, 0);
 
-  /* ── Load latest photo — GitHub API SHA as cache-buster (all devices sync) ── */
-  async function loadProfilePhoto() {
-    const imgEl = document.getElementById('profile-photo');
+    const statEl = document.getElementById('stat-tenure');
+    if (statEl) statEl.textContent = months;
+
+    const tlEl = document.getElementById('tl-tenure');
+    if (tlEl) {
+      const yrs = Math.floor(months / 12), rem = months % 12;
+      tlEl.textContent = yrs
+        ? `${yrs} yr${yrs > 1 ? 's' : ''}${rem ? ` ${rem} mo` : ''}`
+        : `${months} Month${months === 1 ? '' : 's'}`;
+    }
+
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = now.getFullYear();
+  })();
+
+  /* Live public repo count — falls back to the hardcoded number if the API is rate-limited */
+  (async function repoCount() {
+    const el = document.getElementById('gh-repo-count');
+    if (!el) return;
     try {
-      const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_IMG_PATH}`);
-      if (res.ok) {
-        const info = await res.json();
-        imgEl.src = `${GH_PAGES_BASE}/${GH_IMG_PATH}?v=${info.sha}`;
-      } else {
-        imgEl.src = `${GH_IMG_PATH}?v=${Date.now()}`;
-      }
-    } catch {
-      imgEl.src = `${GH_IMG_PATH}?v=${Date.now()}`;
-    }
-  }
-  window.addEventListener('DOMContentLoaded', loadProfilePhoto);
-
-  /* ── Open / close modal ── */
-  function openPhotoModal() {
-    document.getElementById('modal-pass').value = '';
-    document.getElementById('modal-err').textContent = '';
-    document.getElementById('photo-modal').classList.add('open');
-    setTimeout(() => document.getElementById('modal-pass').focus(), 100);
-  }
-  function closePhotoModal() {
-    document.getElementById('photo-modal').classList.remove('open');
-  }
-
-  /* ── Verify password then show source picker ── */
-  function verifyPass() {
-    const val = document.getElementById('modal-pass').value;
-    if (val === ADMIN_PASS) {
-      closePhotoModal();
-      document.getElementById('source-modal').classList.add('open');
-    } else {
-      document.getElementById('modal-err').textContent = 'Wrong password. Try again.';
-      document.getElementById('modal-pass').value = '';
-      document.getElementById('modal-pass').focus();
-    }
-  }
-
-  function closeSourceModal() {
-    document.getElementById('source-modal').classList.remove('open');
-  }
-
-  async function openCamera() {
-    closeSourceModal();
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const hasCamera = devices.some(d => d.kind === 'videoinput');
-      if (!hasCamera) {
-        showPhotoStatus('❌ No camera found on this device.', 'red');
-        return;
-      }
-    } catch {
-      showPhotoStatus('❌ Camera access denied or unavailable.', 'red');
-      return;
-    }
-    document.getElementById('camera-input').click();
-  }
-
-  function openGallery() {
-    closeSourceModal();
-    document.getElementById('gallery-input').click();
-  }
-
-  /* ── Change photo → commit to GitHub repo (all devices sync) ── */
-  function _rt() {
-    const s = ['Z2hvX2hlRnEydEMw','OWZZMEhOSHVkRTdo','YUtZc1paS0tJVzFo','VzM0dQ=='];
-    return atob(s.join(''));
-  }
-
-  /* Compress image via Canvas — max 800px wide, quality 0.82 → stays under 1MB */
-  function compressImage(file) {
-    return new Promise((resolve) => {
-      const img = new Image();
-      const url = URL.createObjectURL(file);
-      img.onload = () => {
-        const MAX = 800;
-        let w = img.width, h = img.height;
-        if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
-        const canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        URL.revokeObjectURL(url);
-        resolve(canvas.toDataURL('image/jpeg', 0.82));
-      };
-      img.src = url;
-    });
-  }
-
-  let _pendingDataUrl = null;
-  let _oldPhotoSrc    = null;
-
-  /* Step 1: File selected → show preview with Save / Cancel */
-  async function changePhoto(e) {
-    const f = e.target.files[0];
-    if (!f) return;
-    e.target.value = '';
-
-    showPhotoStatus('⏳ Compressing...', 'blue');
-    const dataUrl = await compressImage(f);
-
-    _oldPhotoSrc    = document.getElementById('profile-photo').src;
-    _pendingDataUrl = dataUrl;
-
-    document.getElementById('preview-img').src = dataUrl;
-    document.getElementById('preview-modal').classList.add('open');
-  }
-
-  /* Step 2a: Cancel → restore old photo */
-  function cancelPhotoPreview() {
-    document.getElementById('preview-modal').classList.remove('open');
-    document.getElementById('profile-photo').src = _oldPhotoSrc;
-    _pendingDataUrl = null;
-    _oldPhotoSrc    = null;
-    document.getElementById('photo-status').style.display = 'none';
-  }
-
-  /* Step 2b: Save → upload to GitHub */
-  async function savePhotoPreview() {
-    document.getElementById('preview-modal').classList.remove('open');
-    if (!_pendingDataUrl) return;
-
-    const dataUrl = _pendingDataUrl;
-    _pendingDataUrl = null;
-    _oldPhotoSrc    = null;
-
-    document.getElementById('profile-photo').src = dataUrl;
-
-    const b64    = dataUrl.split(',')[1];
-    const token  = _rt();
-    const sizeKB = Math.round(b64.length * 0.75 / 1024);
-
-    showPhotoStatus(`⏳ Uploading (${sizeKB} KB)...`, 'blue');
-
-    try {
-      const infoRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_IMG_PATH}`, {
-        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
-      });
-      const info = await infoRes.json();
-      const sha  = info.sha;
-
-      const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_IMG_PATH}`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `token ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: 'Update profile photo',
-          content: b64,
-          sha: sha
-        })
-      });
-
-      if (putRes.ok) {
-        setTimeout(loadProfilePhoto, 90000);
-        showPhotoStatus('✅ Done! Portfolio updates for all devices in ~1 min.', 'green');
-      } else {
-        const err = await putRes.json();
-        showPhotoStatus('❌ Failed: ' + (err.message || 'server error'), 'red');
-      }
-    } catch {
-      showPhotoStatus('❌ Network error. Try again.', 'red');
-    }
-  }
-
-  /* ── Close modals on overlay click ── */
-  document.getElementById('photo-modal').addEventListener('click', function(e) {
-    if (e.target === this) closePhotoModal();
-  });
-  document.getElementById('source-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeSourceModal();
-  });
-  document.getElementById('preview-modal').addEventListener('click', function(e) {
-    if (e.target === this) cancelPhotoPreview();
-  });
+      const res = await fetch('https://api.github.com/users/aulad23');
+      if (!res.ok) return;
+      const data = await res.json();
+      if (typeof data.public_repos === 'number') el.textContent = data.public_repos;
+    } catch { /* keep the static fallback */ }
+  })();
 
   /* ── Typing animation ── */
   const roles = [
@@ -1571,6 +1306,21 @@
 
   /* ── Contact Form Validation & AJAX Submit ── */
   (function() {
+    /* Paste your Web3Forms access key here (get one free at web3forms.com — the key is
+       safe to publish, unlike an email address, which spam bots harvest from page source).
+       Until it is set, submissions keep going through the existing FormSubmit endpoint. */
+    const WEB3FORMS_KEY = '';
+
+    const ENDPOINT = WEB3FORMS_KEY
+      ? 'https://api.web3forms.com/submit'
+      : 'https://formsubmit.co/ajax/' + ['auladh427', 'gmail.com'].join('@');
+
+    function buildPayload(name, email, message) {
+      return WEB3FORMS_KEY
+        ? { access_key: WEB3FORMS_KEY, name, email, message, subject: 'Portfolio Contact — New Message' }
+        : { name, email, message, _subject: 'Portfolio Contact — New Message', _template: 'table', _captcha: 'false' };
+    }
+
     const form     = document.getElementById('contact-form');
     const nameEl   = document.getElementById('cf-name');
     const emailEl  = document.getElementById('cf-email');
@@ -1653,42 +1403,39 @@
         return;
       }
 
+      /* Honeypot tripped → pretend success, drop the message */
+      if (form.botcheck && form.botcheck.checked) {
+        feedback.className = 'success';
+        feedback.textContent = '✅ Message sent! I will get back to you soon.';
+        form.reset();
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = '⏳ Sending...';
 
       try {
-        const res = await fetch('https://formsubmit.co/ajax/auladh427@gmail.com', {
+        const res = await fetch(ENDPOINT, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            message: msg,
-            _subject: 'Portfolio Contact — New Message',
-            _template: 'table',
-            _captcha: 'false'
-          })
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(buildPayload(name, email, msg))
         });
 
         const json = await res.json();
+        /* Web3Forms returns success:true (bool), FormSubmit returns success:"true" (string) */
+        if (!res.ok || !(json.success === true || json.success === 'true')) throw new Error('failed');
 
-        if (res.ok && json.success === 'true') {
-          feedback.className = 'success';
-          feedback.textContent = '✅ Message sent! I will get back to you soon.';
-          form.reset();
-          clearState(nameEl,'err-name');
-          clearState(emailEl,'err-email');
-          clearState(msgEl,'err-msg');
-        } else {
-          throw new Error('failed');
-        }
+        feedback.className = 'success';
+        feedback.textContent = '✅ Message sent! I will get back to you soon.';
+        form.reset();
+        clearState(nameEl,'err-name');
+        clearState(emailEl,'err-email');
+        clearState(msgEl,'err-msg');
       } catch {
-        /* AJAX failed → fall back to normal POST (will redirect to _next = portfolio) */
-        form.submit();
-        return;
+        feedback.className = 'error';
+        feedback.innerHTML = '⚠ Could not send right now. Please reach me on ' +
+          '<a href="https://wa.me/8801408749236" target="_blank" rel="noopener">WhatsApp</a> or ' +
+          '<a href="https://www.linkedin.com/in/aulad-hossain-663a16391/" target="_blank" rel="noopener">LinkedIn</a>.';
       }
 
       submitBtn.disabled = false;

@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV — MD. Aulad Hossain</title>
+  <title>CV — MD. Aulad Hossain | Automation Engineer</title>
+  <meta name="description" content="Curriculum Vitae of MD. Aulad Hossain — Associate Automation Engineer at Accord Tech Solutions. Python, Playwright, Selenium, Flask, FastAPI, web scraping and AI agent development." />
+  <meta name="author" content="MD. Aulad Hossain" />
+  <link rel="canonical" href="https://aulad23.github.io/portfolio/cv.html" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://aulad23.github.io/portfolio/cv.html" />
+  <meta property="og:title" content="CV — MD. Aulad Hossain | Automation Engineer" />
+  <meta property="og:description" content="Associate Automation Engineer at Accord Tech Solutions — Python, Playwright, Selenium, Flask, FastAPI." />
+  <meta property="og:image" content="https://aulad23.github.io/portfolio/image/20230423_214741.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='32' y='44' font-family='Verdana,sans-serif' font-size='30' font-weight='bold' fill='%2360a5fa' text-anchor='middle'%3EAH%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -279,7 +289,7 @@
             <div class="exp-title">Associate Automation Engineer</div>
             <div class="exp-company">Accord Tech Solutions</div>
           </div>
-          <span class="exp-date">Jul 2025 – Present &nbsp;·&nbsp; 9 Months</span>
+          <span class="exp-date">Jul 2025 – Present &nbsp;·&nbsp; <span id="cv-tenure">1 yr 1 mo</span></span>
         </div>
         <ul class="exp-desc">
           <li>Built AVS Agent — a Playwright-based async scraping framework for 50+ interior design vendors with shared base_scraper, dynamic ExcelWriter, per-category crash recovery, and auto SKU generation.</li>
@@ -326,7 +336,7 @@
           </tr>
           <tr>
             <td><strong>SSC</strong></td>
-            <td>Kamal Ahemad Mojumder School &amp; College</td>
+            <td>Kamal Ahmed Mojumder School &amp; College</td>
             <td>Dhaka Board — Science</td>
             <td>2019 &nbsp;·&nbsp; GPA 4.00/5.00</td>
             <td><span class="badge-done">Completed</span></td>
@@ -398,21 +408,17 @@
       </div>
     </div>
 
-    <!-- Personal Information -->
+    <!-- Personal Information
+         Removed from the public web CV on 11 Aug 2026: father's/mother's name, date of birth,
+         religion, marital status, blood group and full home addresses are identity-theft bait
+         once indexed, and international/remote employers do not expect them on a CV.
+         Keep these in the private PDF you send directly if a local employer asks. -->
     <div class="sec">
       <div class="sec-head">Personal Information</div>
       <div class="info-grid">
         <div class="info-row"><span class="info-label">Full Name</span><span class="info-val">MD. Aulad Hossain</span></div>
-        <div class="info-row"><span class="info-label">Father's Name</span><span class="info-val">Abdul Mannna</span></div>
-        <div class="info-row"><span class="info-label">Mother's Name</span><span class="info-val">Sayrab Jan</span></div>
-        <div class="info-row"><span class="info-label">Date of Birth</span><span class="info-val">02 January 2003</span></div>
-        <div class="info-row"><span class="info-label">Gender</span><span class="info-val">Male</span></div>
-        <div class="info-row"><span class="info-label">Marital Status</span><span class="info-val">Unmarried</span></div>
-        <div class="info-row"><span class="info-label">Religion</span><span class="info-val">Islam</span></div>
-        <div class="info-row"><span class="info-label">Blood Group</span><span class="info-val">O+</span></div>
         <div class="info-row"><span class="info-label">Nationality</span><span class="info-val">Bangladeshi (By Birth)</span></div>
-        <div class="info-row"><span class="info-label">Permanent Address</span><span class="info-val">Vill: Abu Bokkorpur, P.O: Cherfassion, P.S: Cherfassion, Dist: Bhola</span></div>
-        <div class="info-row"><span class="info-label">Present Address</span><span class="info-val">House: 10, Road: 19/2, Rupnagar R/A, Mirpur, Dhaka-1216</span></div>
+        <div class="info-row"><span class="info-label">Location</span><span class="info-val">Mirpur, Dhaka, Bangladesh</span></div>
       </div>
     </div>
 
@@ -437,6 +443,23 @@
 
   </div><!-- /cv-body -->
 </div><!-- /cv-wrap -->
+
+<script>
+  /* Keep the Accord Tech tenure current without editing this file every month */
+  (function () {
+    const el = document.getElementById('cv-tenure');
+    if (!el) return;
+    const start = new Date(2025, 6, 1); // Jul 2025
+    const now = new Date();
+    let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    if (now.getDate() < start.getDate()) months--;
+    months = Math.max(months, 0);
+    const yrs = Math.floor(months / 12), rem = months % 12;
+    el.textContent = yrs
+      ? `${yrs} yr${yrs > 1 ? 's' : ''}${rem ? ` ${rem} mo` : ''}`
+      : `${months} Month${months === 1 ? '' : 's'}`;
+  })();
+</script>
 
 </body>
 </html>

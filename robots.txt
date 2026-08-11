@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aulad23.github.io/portfolio/sitemap.xml
