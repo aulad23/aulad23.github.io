@@ -920,10 +920,15 @@
           <span class="tl-date">Jul 2025 – Present · <span id="tl-tenure">1 yr 1 mo</span></span>
         </div>
         <ul class="tl-desc">
-          <li>Built and maintain SD_SKU_Agent — scrapes product data from 60+ furniture brand websites with minimal manual work.</li>
+          <li>Built AVS Agent — a Playwright-based async scraping framework covering 48 interior design vendors, with a shared base_scraper, dynamic ExcelWriter, per-category crash recovery, and automatic SKU generation.</li>
+          <li>Built and maintain SD_SKU_Agent — an AI-driven scraper that pulls product data from furniture brand websites with minimal manual work.</li>
           <li>Wrote a Brain.md decision framework the agent uses to figure out site type, scraping method, and pagination on its own.</li>
-          <li>Worked with Selenium, BeautifulSoup, and Shopify APIs across Shopify, WooCommerce, Next.js, and custom-built storefronts.</li>
+          <li>Built SD_SKU Catalog QC — a Flask web app that turns vendor Excel/CSV exports into a browsable catalog for data QC, with an image-health auditor that separates real 404s from host-blocked requests and exports per-vendor CSV reports for client hand-off.</li>
+          <li>Worked with Playwright, Selenium, BeautifulSoup, and Shopify APIs across Shopify, WooCommerce, Next.js, and custom-built storefronts.</li>
           <li>Built an Agent Weekly Report system that summarizes scraping activity and sends automated weekly reports via FastAPI.</li>
+          <li>Built SC-AU — LinkedIn contact verification and Crunchbase investor list automation with filtering and merge pipelines.</li>
+          <li>Developed Map Bot — geolocation automation that finds and lists businesses within a given radius across 15+ categories.</li>
+          <li>Built the LinkedIn Pet Institute scraper for targeted industry outreach and structured data export.</li>
           <li>Keep things organized with Git — demo mode, confirm mode, and done flags so the team always knows what's running.</li>
         </ul>
       </div>
@@ -1012,10 +1017,10 @@
     </div>
     <div class="proj-card">
       <h3>AVS Agent — Playwright Scraping System</h3>
-      <p>Production-grade agentic scraping framework for 50+ interior design vendors. Playwright-powered async engine with shared base_scraper, dynamic ExcelWriter, and per-vendor orchestration. Auto-generates SKUs, handles variants, and saves per-category on crash recovery.</p>
+      <p>Production-grade agentic scraping framework covering 48 interior design vendors. Playwright-powered async engine with shared base_scraper, dynamic ExcelWriter, and per-vendor orchestration. Auto-generates SKUs, handles variants, and saves per-category on crash recovery.</p>
       <div class="proj-tags">
         <span class="tag">Python</span><span class="tag">Playwright</span>
-        <span class="tag">Async</span><span class="tag">50+ Vendors</span>
+        <span class="tag">Async</span><span class="tag">48 Vendors</span>
       </div>
       <a class="proj-link" href="https://github.com/aulad23/phase-05-AU/tree/master/AVS-Agent" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1204,18 +1209,18 @@
       <div class="cf-row">
         <div class="cf-group">
           <label for="cf-name">Name</label>
-          <input type="text" id="cf-name" name="name" placeholder="Your full name">
+          <input type="text" id="cf-name" name="name" placeholder="Your full name" required minlength="2" maxlength="100" autocomplete="name">
           <span class="cf-err" id="err-name"></span>
         </div>
         <div class="cf-group">
           <label for="cf-email">Email</label>
-          <input type="email" id="cf-email" name="email" placeholder="your@email.com">
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required maxlength="150" autocomplete="email">
           <span class="cf-err" id="err-email"></span>
         </div>
       </div>
       <div class="cf-group">
         <label for="cf-msg">Message</label>
-        <textarea id="cf-msg" name="message" placeholder="Write your message here..."></textarea>
+        <textarea id="cf-msg" name="message" placeholder="Write your message here..." required minlength="10" maxlength="3000"></textarea>
         <span class="cf-err" id="err-msg"></span>
       </div>
       <div id="cf-feedback"></div>
