@@ -172,6 +172,17 @@
     }
 
     /* ── Skills ── */
+    .skill-list { list-style: none; }
+    .skill-list li {
+      font-size: .82rem; color: #475569;
+      padding: 3px 0 3px 15px; position: relative;
+    }
+    .skill-list li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: #1e3a5f; font-size: .72rem; top: 5px;
+    }
+    .skill-list strong { color: #1e3a5f; font-weight: 700; }
+
     .skill-group { margin-bottom: 10px; }
     .skill-group-title {
       font-size: .75rem; font-weight: 700; color: #1e3a5f;
@@ -240,10 +251,7 @@
       .exp-card { padding: 9px 13px; margin-bottom: 7px; }
       .exp-desc li { padding: 1px 0 1px 12px; }
       .edu-table th, .edu-table td { padding: 4px 8px; }
-      .skill-group { margin-bottom: 6px; }
-      .skill-group-title { margin-bottom: 3px; }
-      .skill-pills { gap: 4px; }
-      .skill-pill { padding: 1px 8px; }
+      .skill-list li { padding: 1px 0 1px 12px; }
       .info-row { padding: 1px 0; }
       .lang-item { padding: 4px 12px; }
       .cert-box { padding: 10px 14px; }
@@ -367,64 +375,14 @@
     <!-- Skills -->
     <div class="sec">
       <div class="sec-head">Technical Skills</div>
-      <div class="skill-group">
-        <div class="skill-group-title">Programming</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">HTML &amp; CSS</span>
-          <span class="skill-pill">OOP Design</span>
-          <span class="skill-pill">Async Programming</span>
-          <span class="skill-pill">Regex</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Frameworks &amp; Libraries</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Playwright</span>
-          <span class="skill-pill">Selenium</span>
-          <span class="skill-pill">BeautifulSoup</span>
-          <span class="skill-pill">Scrapy</span>
-          <span class="skill-pill">Requests</span>
-          <span class="skill-pill">Pandas</span>
-          <span class="skill-pill">Flask</span>
-          <span class="skill-pill">FastAPI</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">AI &amp; API</div>
-        <div class="skill-pills">
-          <span class="skill-pill green">AI Agent Systems</span>
-          <span class="skill-pill green">Claude API</span>
-          <span class="skill-pill green">Shopify API</span>
-          <span class="skill-pill green">REST API Integration</span>
-          <span class="skill-pill green">Captcha Handling</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Website &amp; E-commerce Platforms</div>
-        <div class="skill-pills">
-          <span class="skill-pill green">Shopify</span>
-          <span class="skill-pill green">WooCommerce</span>
-          <span class="skill-pill green">Magento 2</span>
-          <span class="skill-pill green">BigCommerce</span>
-          <span class="skill-pill green">NetSuite</span>
-          <span class="skill-pill green">EPiServer</span>
-          <span class="skill-pill green">Next.js Sites</span>
-          <span class="skill-pill green">Custom CMS</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Tools</div>
-        <div class="skill-pills">
-          <span class="skill-pill gray">Git &amp; GitHub</span>
-          <span class="skill-pill gray">VS Code</span>
-          <span class="skill-pill gray">Linux / CLI</span>
-          <span class="skill-pill gray">Excel / CSV / JSON</span>
-          <span class="skill-pill gray">MS Word / PowerPoint</span>
-          <span class="skill-pill gray">Typing — English 40 WPM, Bangla 25 WPM</span>
-        </div>
-      </div>
+      <ul class="skill-list">
+        <li><strong>Programming:</strong> Python, SQL, HTML &amp; CSS, OOP Design, Async Programming, Regex</li>
+        <li><strong>Frameworks &amp; Libraries:</strong> Playwright, Selenium, BeautifulSoup, Scrapy, Requests, Pandas, Flask, FastAPI</li>
+        <li><strong>AI &amp; API:</strong> AI Agent Systems, Claude API, Shopify API, REST API Integration, Captcha Handling</li>
+        <li><strong>Website &amp; E-commerce Platforms:</strong> Shopify, WooCommerce, Magento 2, BigCommerce, NetSuite, EPiServer, Next.js Sites, Custom CMS</li>
+        <li><strong>Tools:</strong> Git &amp; GitHub, VS Code, Linux / CLI, Excel / CSV / JSON, MS Word / PowerPoint</li>
+        <li><strong>Typing Speed:</strong> English &mdash; 40 WPM, Bangla &mdash; 25 WPM</li>
+      </ul>
     </div>
 
     <!-- Language -->
