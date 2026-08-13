@@ -82,12 +82,19 @@
       font-size: .82rem; font-weight: 500;
       color: #93c5fd; margin-top: 3px; margin-bottom: 10px;
     }
-    .cv-contacts {
-      display: flex; flex-wrap: wrap; gap: 6px 18px;
-    }
+    /* Block + inline-block, not flex: a flex container drops the whitespace between its
+       items, so the PDF text layer runs the email straight into the next field
+       ("...@gmail.comAddress:") and an ATS can pick up a corrupted email. */
+    .cv-contacts { display: block; }
     .cv-contacts a, .cv-contacts span {
       font-size: .75rem; color: #cbd5e1;
-      text-decoration: none; display: flex; align-items: center; gap: 4px;
+      text-decoration: none; display: inline;
+    }
+    /* A real separator glyph, not margin. Whitespace between inline-blocks does not
+       survive into the PDF text layer, which glued the email to the next field and left
+       an ATS regex matching "auladh427@gmail.comAddress". This character always lands. */
+    .cv-contacts > *:not(:last-child)::after {
+      content: '  \00B7  '; color: #64748b;
     }
     .cv-contacts a:hover { color: #93c5fd; }
 
@@ -112,33 +119,15 @@
       color: #475569; font-size: .84rem; line-height: 1.75;
     }
 
-    /* ── Education table ── */
-    .edu-table { width: 100%; border-collapse: collapse; }
-    .edu-table th {
-      background: #dbeafe; color: #1e3a5f;
-      font-size: .72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .08em;
-      padding: 6px 10px; text-align: left;
+    /* ── Education ── */
+    .edu-entry { margin-bottom: 8px; }
+    .edu-line {
+      display: flex; justify-content: space-between;
+      align-items: baseline; gap: 12px; flex-wrap: wrap;
+      font-size: .84rem; color: #1e3a5f;
     }
-    .edu-table td {
-      padding: 6px 10px; font-size: .8rem;
-      border-bottom: 1px solid #f1f5f9;
-      color: #334155;
-    }
-    .edu-table tr:last-child td { border-bottom: none; }
-    .edu-table tr:nth-child(even) td { background: #f8fafc; }
-    .badge-run {
-      display: inline-block; font-size: .65rem; font-weight: 700;
-      background: #dbeafe; color: #1d4ed8;
-      border: 1px solid #93c5fd;
-      padding: 1px 7px; border-radius: 20px;
-    }
-    .badge-done {
-      display: inline-block; font-size: .65rem; font-weight: 700;
-      background: #dcfce7; color: #15803d;
-      border: 1px solid #86efac;
-      padding: 1px 7px; border-radius: 20px;
-    }
+    .edu-when { font-size: .76rem; font-weight: 600; color: #1e40af; white-space: nowrap; }
+    .edu-meta { font-size: .78rem; color: #475569; }
 
     /* ── Experience ── */
     .exp-card {
@@ -161,61 +150,44 @@
       border: 1px solid #93c5fd;
       padding: 2px 10px; border-radius: 20px; white-space: nowrap;
     }
+    /* No position:relative / absolute markers here. Positioned elements paint in a later
+       phase, which pushes these bullets behind the following sections in the PDF text
+       layer - an ATS then files the work experience under whatever heading came after.
+       The negative-margin marker keeps the same look in normal flow order. */
     .exp-desc { list-style: none; margin-top: 6px; }
     .exp-desc li {
       font-size: .8rem; color: #475569;
-      padding: 2px 0 2px 14px; position: relative;
+      padding: 2px 0 2px 14px;
     }
     .exp-desc li::before {
-      content: '▸'; position: absolute; left: 0;
-      color: #1e3a5f; font-size: .7rem; top: 3px;
+      content: '▸ '; display: inline-block;
+      width: 14px; margin-left: -14px;
+      color: #1e3a5f; font-size: .7rem;
     }
 
     /* ── Skills ── */
     .skill-list { list-style: none; }
     .skill-list li {
       font-size: .82rem; color: #475569;
-      padding: 3px 0 3px 15px; position: relative;
+      padding: 3px 0 3px 15px;
     }
     .skill-list li::before {
-      content: '▸'; position: absolute; left: 0;
-      color: #1e3a5f; font-size: .72rem; top: 5px;
+      content: '▸ '; display: inline-block;
+      width: 15px; margin-left: -15px;
+      color: #1e3a5f; font-size: .72rem;
     }
     .skill-list strong { color: #1e3a5f; font-weight: 700; }
 
-    .skill-group { margin-bottom: 10px; }
-    .skill-group-title {
-      font-size: .75rem; font-weight: 700; color: #1e3a5f;
-      margin-bottom: 5px;
-    }
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
-    .skill-pill {
-      font-size: .72rem; font-weight: 500;
-      background: #eff6ff; color: #1e40af;
-      border: 1px solid #bfdbfe;
-      padding: 2px 10px; border-radius: 20px;
-    }
-    .skill-pill.green { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
-    .skill-pill.gray  { background: #f8fafc; color: #475569; border-color: #e2e8f0; }
-
-    /* ── Two column ── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-    /* ── Personal Info ── */
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
-    .info-row { display: flex; gap: 6px; font-size: .8rem; padding: 3px 0; }
-    .info-label { font-weight: 600; color: #1e3a5f; min-width: 110px; }
+    /* ── Personal Info ──
+       Single column on purpose: a 2-column grid reads left-to-right across both
+       columns in most ATS parsers, pairing each label with the wrong value. */
+    .info-grid { display: grid; grid-template-columns: 1fr; gap: 2px; }
+    /* Block + inline-block rather than flex: flex containers drop the whitespace between
+       items, so the PDF text layer reads "Permanent AddressVill: ..." with no separator
+       and an ATS cannot tell where the label ends. */
+    .info-row { display: block; font-size: .8rem; padding: 3px 0; }
+    .info-label { font-weight: 600; color: #1e3a5f; display: inline-block; min-width: 130px; padding-right: 8px; }
     .info-val { color: #475569; }
-
-    /* ── Language ── */
-    .lang-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .lang-item {
-      display: flex; align-items: center; gap: 8px;
-      background: #f8fafc; border: 1px solid #e2e8f0;
-      border-radius: 6px; padding: 6px 14px; font-size: .8rem;
-    }
-    .lang-name { font-weight: 600; color: #1e3a5f; }
-    .lang-lvl { color: #64748b; font-size: .73rem; }
 
     /* ── Certification ── */
     .cert-box {
@@ -249,11 +221,10 @@
       .sec-head { margin-bottom: 7px; padding-bottom: 3px; }
       .objective p { line-height: 1.5; }
       .exp-card { padding: 9px 13px; margin-bottom: 7px; }
-      .exp-desc li { padding: 1px 0 1px 12px; }
-      .edu-table th, .edu-table td { padding: 4px 8px; }
-      .skill-list li { padding: 1px 0 1px 12px; }
+      /* Marker width must track the padding, or the bullet hangs outside the text block */
+      .exp-desc li, .skill-list li { padding: 1px 0 1px 12px; }
+      .exp-desc li::before, .skill-list li::before { width: 12px; margin-left: -12px; }
       .info-row { padding: 1px 0; }
-      .lang-item { padding: 4px 12px; }
       .cert-box { padding: 10px 14px; }
 
       /* Never split a section across the page break */
@@ -285,13 +256,16 @@
     <div class="cv-header-info">
       <h1>MD. Aulad Hossain</h1>
       <div class="role">Associate Automation Engineer &amp; Python Developer</div>
+      <!-- Plain text, no emoji: ATS parsers routinely mangle or drop emoji, and a
+           phone number glued to one can be lost entirely. Labels are spelled out so a
+           parser can map each value to the right field. -->
       <div class="cv-contacts">
-        <span>📞 01331-588728</span>
-        <a href="mailto:auladh427@gmail.com">✉️ auladh427@gmail.com</a>
-        <span>📍 Rupnagar R/A, Mirpur, Dhaka-1216</span>
-        <a href="https://www.linkedin.com/in/aulad-hossain-663a16391/" target="_blank">🔗 LinkedIn</a>
-        <a href="https://github.com/aulad23" target="_blank">🐙 github.com/aulad23</a>
-        <a href="https://aulad23.github.io" target="_blank">🌐 aulad23.github.io</a>
+        <span>Phone: 01331-588728</span>
+        <a href="mailto:auladh427@gmail.com">Email: auladh427@gmail.com</a>
+        <span>Address: Rupnagar R/A, Mirpur, Dhaka-1216</span>
+        <a href="https://www.linkedin.com/in/aulad-hossain-663a16391/" target="_blank">LinkedIn: linkedin.com/in/aulad-hossain-663a16391</a>
+        <a href="https://github.com/aulad23" target="_blank">GitHub: github.com/aulad23</a>
+        <a href="https://aulad23.github.io" target="_blank">Portfolio: aulad23.github.io</a>
       </div>
     </div>
   </div>
@@ -335,41 +309,21 @@
 
     <!-- Education -->
     <div class="sec">
-      <div class="sec-head">Educational Qualification</div>
-      <table class="edu-table">
-        <thead>
-          <tr>
-            <th>Degree</th>
-            <th>Institute</th>
-            <th>Board / Subject</th>
-            <th>Year / Result</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>BSc in CSE</strong></td>
-            <td>Prime University, Dhaka</td>
-            <td>Computer Science &amp; Engineering</td>
-            <td>3rd Year</td>
-            <td><span class="badge-run">Running</span></td>
-          </tr>
-          <tr>
-            <td><strong>Diploma in Engineering</strong></td>
-            <td>Govt. Graphic Arts Institute</td>
-            <td>BTEB — CSE</td>
-            <td>2024 &nbsp;·&nbsp; CGPA 3.40/4.00</td>
-            <td><span class="badge-done">Completed</span></td>
-          </tr>
-          <tr>
-            <td><strong>SSC</strong></td>
-            <td>Kamal Ahmed Mojumder School &amp; College</td>
-            <td>Dhaka Board — Science</td>
-            <td>2019 &nbsp;·&nbsp; GPA 4.00/5.00</td>
-            <td><span class="badge-done">Completed</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="sec-head">Education</div>
+      <!-- Deliberately not a <table>. ATS parsers read tables column-by-column and
+           scramble the rows; a flat block per degree survives parsing intact. -->
+      <div class="edu-entry">
+        <div class="edu-line"><strong>BSc in Computer Science &amp; Engineering</strong> <span class="edu-when">3rd Year &mdash; Running</span></div>
+        <div class="edu-meta">Prime University, Dhaka</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-line"><strong>Diploma in Engineering (Computer Science)</strong> <span class="edu-when">2024 &mdash; CGPA 3.40 / 4.00</span></div>
+        <div class="edu-meta">Govt. Graphic Arts Institute, Dhaka &mdash; Bangladesh Technical Education Board</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-line"><strong>Secondary School Certificate (Science)</strong> <span class="edu-when">2019 &mdash; GPA 4.00 / 5.00</span></div>
+        <div class="edu-meta">Kamal Ahmed Mojumder School &amp; College &mdash; Dhaka Board</div>
+      </div>
     </div>
 
     <!-- Skills -->
@@ -381,23 +335,16 @@
         <li><strong>AI &amp; API:</strong> AI Agent Systems, Claude API, Shopify API, REST API Integration, Captcha Handling</li>
         <li><strong>Website &amp; E-commerce Platforms:</strong> Shopify, WooCommerce, Magento 2, BigCommerce, NetSuite, EPiServer, Next.js Sites, Custom CMS</li>
         <li><strong>Tools:</strong> Git &amp; GitHub, VS Code, Linux / CLI, Excel / CSV / JSON, MS Word / PowerPoint</li>
-        <li><strong>Typing Speed:</strong> English &mdash; 40 WPM, Bangla &mdash; 25 WPM</li>
       </ul>
     </div>
 
     <!-- Language -->
     <div class="sec">
       <div class="sec-head">Language</div>
-      <div class="lang-row">
-        <div class="lang-item">
-          <div class="lang-name">English</div>
-          <div class="lang-lvl">Reading, Writing &amp; Speaking</div>
-        </div>
-        <div class="lang-item">
-          <div class="lang-name">Bangla</div>
-          <div class="lang-lvl">Native — Reading, Writing &amp; Speaking</div>
-        </div>
-      </div>
+      <ul class="skill-list">
+        <li><strong>English:</strong> Professional &mdash; Reading, Writing &amp; Speaking</li>
+        <li><strong>Bangla:</strong> Native &mdash; Reading, Writing &amp; Speaking</li>
+      </ul>
     </div>
 
     <!-- Personal Information
@@ -408,17 +355,17 @@
     <div class="sec">
       <div class="sec-head">Personal Information</div>
       <div class="info-grid">
-        <div class="info-row"><span class="info-label">Full Name</span><span class="info-val">MD. Aulad Hossain</span></div>
-        <div class="info-row"><span class="info-label">Father's Name</span><span class="info-val">Abdul Mannan</span></div>
-        <div class="info-row"><span class="info-label">Mother's Name</span><span class="info-val">Sayrab Jan</span></div>
-        <div class="info-row"><span class="info-label">Date of Birth</span><span class="info-val">02 January 2003</span></div>
-        <div class="info-row"><span class="info-label">Gender</span><span class="info-val">Male</span></div>
-        <div class="info-row"><span class="info-label">Marital Status</span><span class="info-val">Unmarried</span></div>
-        <div class="info-row"><span class="info-label">Religion</span><span class="info-val">Islam</span></div>
-        <div class="info-row"><span class="info-label">Blood Group</span><span class="info-val">O+</span></div>
-        <div class="info-row"><span class="info-label">Nationality</span><span class="info-val">Bangladeshi (By Birth)</span></div>
-        <div class="info-row"><span class="info-label">Permanent Address</span><span class="info-val">Vill: Abu Bokkorpur, P.O: Char Fasson, P.S: Char Fasson, Dist: Bhola</span></div>
-        <div class="info-row"><span class="info-label">Present Address</span><span class="info-val">House: 10, Road: 19/2, Rupnagar R/A, Mirpur, Dhaka-1216</span></div>
+        <div class="info-row"><span class="info-label">Full Name:</span> <span class="info-val">MD. Aulad Hossain</span></div>
+        <div class="info-row"><span class="info-label">Father's Name:</span> <span class="info-val">Abdul Mannan</span></div>
+        <div class="info-row"><span class="info-label">Mother's Name:</span> <span class="info-val">Sayrab Jan</span></div>
+        <div class="info-row"><span class="info-label">Date of Birth:</span> <span class="info-val">02 January 2003</span></div>
+        <div class="info-row"><span class="info-label">Gender:</span> <span class="info-val">Male</span></div>
+        <div class="info-row"><span class="info-label">Marital Status:</span> <span class="info-val">Unmarried</span></div>
+        <div class="info-row"><span class="info-label">Religion:</span> <span class="info-val">Islam</span></div>
+        <div class="info-row"><span class="info-label">Blood Group:</span> <span class="info-val">O+</span></div>
+        <div class="info-row"><span class="info-label">Nationality:</span> <span class="info-val">Bangladeshi (By Birth)</span></div>
+        <div class="info-row"><span class="info-label">Permanent Address:</span> <span class="info-val">Vill: Abu Bokkorpur, P.O: Char Fasson, P.S: Char Fasson, Dist: Bhola</span></div>
+        <div class="info-row"><span class="info-label">Present Address:</span> <span class="info-val">House: 10, Road: 19/2, Rupnagar R/A, Mirpur, Dhaka-1216</span></div>
       </div>
     </div>
 
@@ -463,5 +410,4 @@
 
 </body>
 </html>
-
 
