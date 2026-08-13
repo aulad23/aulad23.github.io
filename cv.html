@@ -222,13 +222,34 @@
     .sig-name { font-style: italic; font-size: .82rem; font-weight: 600; color: #1e3a5f; margin-bottom: 2px; }
 
     /* ── PRINT ── */
+    /* Tuned so the whole CV lands on exactly 2 printed pages. If you add content and it
+       spills to a 3rd page, tighten .sec margin-bottom and .exp-desc li padding first. */
     @media print {
-      body { background: #fff; font-size: 11.5px; }
+      body { background: #fff; font-size: 10.5px; line-height: 1.45; }
       .download-bar { display: none; }
       .cv-wrap { margin: 0; box-shadow: none; border-radius: 0; max-width: 100%; }
-      .cv-header { padding: 20px 28px; }
-      .cv-body { padding: 20px 28px; }
+      .cv-header { padding: 14px 26px; gap: 18px; }
+      .cv-photo { width: 74px; height: 74px; }
+      .cv-header-info h1 { font-size: 1.3rem; }
+      .cv-body { padding: 14px 26px; }
       a { color: inherit; text-decoration: none; }
+
+      .sec { margin-bottom: 12px; }
+      .sec-head { margin-bottom: 7px; padding-bottom: 3px; }
+      .objective p { line-height: 1.5; }
+      .exp-card { padding: 9px 13px; margin-bottom: 7px; }
+      .exp-desc li { padding: 1px 0 1px 12px; }
+      .edu-table th, .edu-table td { padding: 4px 8px; }
+      .skill-group { margin-bottom: 6px; }
+      .skill-group-title { margin-bottom: 3px; }
+      .skill-pills { gap: 4px; }
+      .skill-pill { padding: 1px 8px; }
+      .info-row { padding: 1px 0; }
+      .lang-item { padding: 4px 12px; }
+      .cert-box { padding: 10px 14px; }
+
+      /* Never split a section across the page break */
+      .sec, .exp-card { break-inside: avoid; }
       @page { margin: 0.5cm; }
     }
   </style>
@@ -292,16 +313,14 @@
           <span class="exp-date">Jul 2025 – Present &nbsp;·&nbsp; <span id="cv-tenure">1 yr 1 mo</span></span>
         </div>
         <ul class="exp-desc">
-          <li>Built AVS Agent — a Playwright-based async scraping framework for 48 interior design vendors with shared base_scraper, dynamic ExcelWriter, per-category crash recovery, and auto SKU generation.</li>
-          <li>Built and maintain SD_SKU_Agent — an AI-driven scraper covering 60+ furniture brand websites.</li>
-          <li>Designed a Brain.md decision framework for automatic site-type detection, method selection, and pagination handling.</li>
-          <li>Worked with Playwright, Selenium, BeautifulSoup, and Shopify APIs across Shopify, WooCommerce, Next.js, and custom storefronts.</li>
-          <li>Built SD_SKU Catalog QC — a Flask web app that imports vendor Excel/CSV exports into a browsable product catalog for data QC, with an image-health auditor that proxies and caches images, separates real 404s from host-blocked requests, and exports per-vendor CSV reports for client hand-off.</li>
-          <li>Built Agent Weekly Report — an automated FastAPI system that generates and sends weekly activity summaries.</li>
-          <li>Maintained Git workflows with demo, confirm, and done execution modes for team-wide visibility.</li>
-          <li>Built SC-AU — LinkedIn contact verification and Crunchbase investor list automation with filtering and merge pipelines.</li>
-          <li>Developed Map Bot — geolocation automation that finds and lists businesses within a given radius across 15+ categories.</li>
-          <li>Built LinkedIn Pet Institute scraper for targeted industry outreach and structured data export.</li>
+          <li><strong>AVS Agent</strong> — Playwright-based async scraping framework for 48 interior design vendors, with a shared base_scraper, dynamic ExcelWriter, per-category crash recovery and auto SKU generation.</li>
+          <li><strong>SD_SKU_Agent</strong> — AI-driven scraper for furniture brand websites, built on a Brain.md decision framework that detects site type, picks the scraping method and handles pagination on its own.</li>
+          <li><strong>SD_SKU Catalog QC</strong> — Flask web app turning vendor Excel/CSV exports into a browsable catalog for data QC, with an image auditor that separates real 404s from host-blocked requests and exports per-vendor CSV reports.</li>
+          <li><strong>Agent Weekly Report</strong> — FastAPI system that generates and emails weekly scraping activity summaries.</li>
+          <li><strong>SC-AU</strong> — LinkedIn contact verification and Crunchbase investor list automation with filtering and merge pipelines.</li>
+          <li><strong>Map Bot</strong> — geolocation automation listing businesses within a given radius across 15+ categories.</li>
+          <li>Scraped Shopify, WooCommerce, Magento 2, BigCommerce, NetSuite and custom storefronts using Playwright, Selenium, BeautifulSoup and Shopify APIs.</li>
+          <li>Maintained Git workflows with demo, confirm and done execution modes for team-wide visibility.</li>
         </ul>
       </div>
     </div>
@@ -347,48 +366,63 @@
 
     <!-- Skills -->
     <div class="sec">
-      <div class="sec-head">Computer Skills</div>
+      <div class="sec-head">Technical Skills</div>
       <div class="skill-group">
-        <div class="skill-group-title">Web Scraping &amp; Automation</div>
+        <div class="skill-group-title">Programming</div>
         <div class="skill-pills">
           <span class="skill-pill">Python</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">HTML &amp; CSS</span>
+          <span class="skill-pill">OOP Design</span>
+          <span class="skill-pill">Async Programming</span>
+          <span class="skill-pill">Regex</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Frameworks &amp; Libraries</div>
+        <div class="skill-pills">
           <span class="skill-pill">Playwright</span>
           <span class="skill-pill">Selenium</span>
           <span class="skill-pill">BeautifulSoup</span>
           <span class="skill-pill">Scrapy</span>
           <span class="skill-pill">Requests</span>
           <span class="skill-pill">Pandas</span>
-          <span class="skill-pill">CSV / JSON</span>
-          <span class="skill-pill">Captcha Solving</span>
-          <span class="skill-pill">Browser Automation</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">FastAPI</span>
         </div>
       </div>
       <div class="skill-group">
         <div class="skill-group-title">AI &amp; API</div>
         <div class="skill-pills">
           <span class="skill-pill green">AI Agent Systems</span>
-          <span class="skill-pill green">FastAPI</span>
-          <span class="skill-pill green">Flask</span>
           <span class="skill-pill green">Claude API</span>
-          <span class="skill-pill green">REST API Integration</span>
           <span class="skill-pill green">Shopify API</span>
+          <span class="skill-pill green">REST API Integration</span>
+          <span class="skill-pill green">Captcha Handling</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Tools &amp; Others</div>
+        <div class="skill-group-title">Website &amp; E-commerce Platforms</div>
+        <div class="skill-pills">
+          <span class="skill-pill green">Shopify</span>
+          <span class="skill-pill green">WooCommerce</span>
+          <span class="skill-pill green">Magento 2</span>
+          <span class="skill-pill green">BigCommerce</span>
+          <span class="skill-pill green">NetSuite</span>
+          <span class="skill-pill green">EPiServer</span>
+          <span class="skill-pill green">Next.js Sites</span>
+          <span class="skill-pill green">Custom CMS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools</div>
         <div class="skill-pills">
           <span class="skill-pill gray">Git &amp; GitHub</span>
-          <span class="skill-pill gray">HTML &amp; CSS</span>
-          <span class="skill-pill gray">MS Word / Excel / PowerPoint</span>
-          <span class="skill-pill gray">Email Management</span>
+          <span class="skill-pill gray">VS Code</span>
           <span class="skill-pill gray">Linux / CLI</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Typing Speed</div>
-        <div class="skill-pills">
-          <span class="skill-pill">English — 40 WPM</span>
-          <span class="skill-pill">Bangla — 25 WPM</span>
+          <span class="skill-pill gray">Excel / CSV / JSON</span>
+          <span class="skill-pill gray">MS Word / PowerPoint</span>
+          <span class="skill-pill gray">Typing — English 40 WPM, Bangla 25 WPM</span>
         </div>
       </div>
     </div>
