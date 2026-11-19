@@ -1,0 +1,46 @@
+import { contact } from "@/data/site";
+
+export default function Contact() {
+  const links = [
+    contact.linkedin && { label: "LinkedIn", href: contact.linkedin },
+    contact.github && { label: "GitHub", href: contact.github },
+    contact.facebook && { label: "Facebook", href: contact.facebook },
+    contact.whatsapp && { label: "WhatsApp", href: contact.whatsapp },
+  ].filter(Boolean) as { label: string; href: string }[];
+
+  return (
+    <section id="contact" aria-labelledby="contact-title" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-5xl px-5 sm:px-8">
+        <div className="bg-text px-6 py-14 text-bg sm:px-14 sm:py-20">
+          <p className="mb-4 font-hand text-[1.8rem] leading-none text-marker">got a website full of data?</p>
+          <h2 id="contact-title" className="max-w-3xl font-serif text-[2.8rem] leading-[1.03] sm:text-[4.2rem]">
+            Let&apos;s <em>work together</em>.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-bg/75">
+            Need product data extracted, a scraper automated, or a dataset checked before delivery? Write to me — I read
+            every message and reply myself.
+          </p>
+
+          {contact.email && (
+            <a
+              href={`mailto:${contact.email}`}
+              className="mt-10 inline-block break-all font-serif text-[1.9rem] leading-tight underline decoration-marker decoration-2 underline-offset-[6px] transition-colors hover:text-marker sm:text-[2.6rem]"
+            >
+              {contact.email}
+            </a>
+          )}
+
+          <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-bg/20 pt-6">
+            {links.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} target="_blank" rel="noopener noreferrer" className="ink-link pb-0.5 text-bg/90 hover:text-bg">
+                  {l.label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}

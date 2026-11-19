@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* Warm "paper and ink" palette. Token names are kept stable so components stay simple. */
+@theme {
+  --color-bg: #f3efe6;        /* paper */
+  --color-surface: #fbf9f4;   /* lighter sheet */
+  --color-surface-2: #e9e3d6; /* pressed paper */
+  --color-line: #d8d0bf;      /* pencil rule */
+  --color-purple: #4b36c8;    /* ink-violet accent */
+  --color-blue: #1f4fb8;
+  --color-success: #1f7a3e;
+  --color-marker: #ffe27a;    /* highlighter */
+  --color-text: #1c1b19;      /* ink */
+  --color-muted: #625d53;
+  --font-sans: var(--ff-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--ff-display), Georgia, serif;
+  --font-hand: var(--ff-hand), "Comic Sans MS", cursive;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background: var(--color-bg);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* faint paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-marker);
+  color: var(--color-text);
+}
+
+/* highlighter stroke behind a word */
+.marker {
+  background: linear-gradient(104deg, transparent 0.6%, var(--color-marker) 2%, var(--color-marker) 96%, transparent 98%) 0 72% / 100% 46% no-repeat;
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* hand-drawn underline on links */
+.ink-link {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat;
+  transition: background-size 250ms ease;
+}
+.ink-link:hover {
+  background-size: 0% 1.5px;
+  background-position: 100% 100%;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+}
+
+.lift {
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms ease, background-color 200ms, border-color 200ms, color 200ms;
+}
+.lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 0 var(--color-text);
+}
+.lift:active {
+  transform: translateY(0);
+  box-shadow: none;
+  transition-duration: 80ms;
+}
+
+.boop {
+  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.boop-parent:hover .boop {
+  transform: rotate(-10deg) scale(1.08);
+}
+
+.pop {
+  animation: pop 350ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.reveal {
+  animation: reveal 0.7s ease-out both;
+}
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
