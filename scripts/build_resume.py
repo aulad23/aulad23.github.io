@@ -1,4 +1,4 @@
-"""Build an ATS-friendly resume (PDF + DOCX) with a photo into public/resume/.
+"""Build ATS-friendly resumes (PDF + DOCX) into public/resume/: one without a photo and one with.
 
 ATS rules followed: one column, standard section headings, real selectable text,
 standard fonts, no tables, images, icons, text boxes or headers/footers.
@@ -27,7 +27,7 @@ CONTACT = [
 
 SUMMARY = (
     "Python developer specializing in web scraping, data extraction and automation. I build production "
-    "scrapers with Playwright, Selenium and BeautifulSoup for 150+ vendor websites, and data pipelines that "
+    "scrapers with Playwright, Selenium and BeautifulSoup for 350+ vendor websites, and data pipelines that "
     "clean, validate and deliver structured product data in Excel and CSV. I also build multi-agent AI systems "
     "with Claude Code, the Claude API and MCP (Model Context Protocol)."
 )
@@ -48,7 +48,7 @@ EXPERIENCE = [
         "org": "Accord Tech Solutions, Dhaka (Web Development)",
         "dates": "Jul 2025 - Present",
         "bullets": [
-            "Built AVS Agent, an async Playwright scraping framework for 48 interior design vendors with a shared "
+            "Built AVS Agent, an async Playwright scraping framework covering 350+ interior design vendors with a shared "
             "base scraper, dynamic Excel writer, per-category crash recovery and automatic SKU generation.",
             "Developed SD_SKU_Agent, an AI-driven scraping system covering 60+ furniture brand websites, using a "
             "decision framework that selects site type, scraping method and pagination strategy.",
@@ -116,7 +116,7 @@ def headshot():
 
 
 # ---------------------------------------------------------------- PDF
-def build_pdf(path: Path) -> None:
+def build_pdf(path: Path, with_photo: bool = True) -> None:
     from reportlab.lib.colors import HexColor
     from reportlab.lib.enums import TA_LEFT
     from reportlab.lib.pagesizes import A4
@@ -143,13 +143,15 @@ def build_pdf(path: Path) -> None:
 
     from reportlab.lib.utils import ImageReader
 
-    photo_w, photo_h = PHOTO_W_MM * mm, PHOTO_H_MM * mm
-    gap = 6 * mm
+    photo_w, photo_h = (PHOTO_W_MM * mm, PHOTO_H_MM * mm) if with_photo else (0, 0)
+    gap = 6 * mm if with_photo else 0
     for st in (s_name, s_title, s_contact):
         st.rightIndent = photo_w + gap
-    photo = ImageReader(headshot())
+    photo = ImageReader(headshot()) if with_photo else None
 
     def draw_photo(canvas, doc):
+        if not photo:
+            return
         x = A4[0] - doc.rightMargin - photo_w
         y = A4[1] - doc.topMargin - photo_h
         canvas.drawImage(photo, x, y, width=photo_w, height=photo_h)
@@ -223,7 +225,7 @@ def float_right(inline_shape) -> None:
     inline.getparent().replace(inline, anchor)
 
 
-def build_docx(path: Path) -> None:
+def build_docx(path: Path, with_photo: bool = True) -> None:
     from docx import Document
     from docx.enum.text import WD_BREAK  # noqa: F401  (kept for future page breaks)
     from docx.oxml.ns import qn
@@ -272,13 +274,15 @@ def build_docx(path: Path) -> None:
     run = name_p.add_run(NAME)
     run.bold = True
     run.font.size = Pt(20)
-    pic = name_p.add_run().add_picture(headshot(), width=Mm(PHOTO_W_MM), height=Mm(PHOTO_H_MM))
-    float_right(pic)
+    if with_photo:
+        pic = name_p.add_run().add_picture(headshot(), width=Mm(PHOTO_W_MM), height=Mm(PHOTO_H_MM))
+        float_right(pic)
     para(TITLE, size=11, color="4A4740", after=0)
     para(" | ".join(CONTACT[:3]), size=9, color="4A4740", after=0)
     para(" | ".join(CONTACT[3:]), size=9, color="4A4740", after=4)
-    spacer = para(after=0)
-    spacer.paragraph_format.space_before = Pt(14)
+    if with_photo:
+        spacer = para(after=0)
+        spacer.paragraph_format.space_before = Pt(14)
 
     heading("Summary")
     para(SUMMARY)
@@ -315,8 +319,10 @@ def build_docx(path: Path) -> None:
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    pdf = OUT / "Aulad_Hossain_Resume.pdf"
-    docx_path = OUT / "Aulad_Hossain_Resume.docx"
-    build_pdf(pdf)
-    build_docx(docx_path)
-    print(f"Wrote {pdf.relative_to(ROOT)} and {docx_path.relative_to(ROOT)}")
+    # Main version without a photo (international / remote roles); "_Photo" version for local applications.
+    for suffix, with_photo in (("", False), ("_Photo", True)):
+        pdf = OUT / f"Aulad_Hossain_Resume{suffix}.pdf"
+        docx_path = OUT / f"Aulad_Hossain_Resume{suffix}.docx"
+        build_pdf(pdf, with_photo)
+        build_docx(docx_path, with_photo)
+        print(f"Wrote {pdf.relative_to(ROOT)} and {docx_path.relative_to(ROOT)}")

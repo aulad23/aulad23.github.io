@@ -1,8 +1,7 @@
 import Section from "./Section";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const pdf = `${base}/resume/Aulad_Hossain_Resume.pdf`;
-const docx = `${base}/resume/Aulad_Hossain_Resume.docx`;
+const file = (name: string) => `${base}/resume/${name}`;
 
 export default function Resume() {
   return (
@@ -15,7 +14,7 @@ export default function Resume() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
             <a
-              href={pdf}
+              href={file("Aulad_Hossain_Resume.pdf")}
               download="Aulad_Hossain_Resume.pdf"
               className="lift inline-flex items-center gap-2 rounded-full bg-text px-6 py-3 font-semibold text-bg"
             >
@@ -24,16 +23,23 @@ export default function Resume() {
               </svg>
               Download Resume (PDF)
             </a>
-            <a href={docx} download="Aulad_Hossain_Resume.docx" className="ink-link pb-0.5 font-semibold">
+            <a href={file("Aulad_Hossain_Resume.docx")} download="Aulad_Hossain_Resume.docx" className="ink-link pb-0.5 font-semibold">
               Word version (.docx)
             </a>
-            <a href={pdf} target="_blank" rel="noopener noreferrer" className="ink-link pb-0.5 font-semibold text-muted">
-              Open in browser ↗
-            </a>
           </div>
+          <p className="mt-6 text-[15px] text-muted">
+            Need a version with a photo?{" "}
+            <a href={file("Aulad_Hossain_Resume_Photo.pdf")} download="Aulad_Hossain_Resume_Photo.pdf" className="ink-link pb-0.5 font-semibold text-text">
+              PDF
+            </a>{" "}
+            ·{" "}
+            <a href={file("Aulad_Hossain_Resume_Photo.docx")} download="Aulad_Hossain_Resume_Photo.docx" className="ink-link pb-0.5 font-semibold text-text">
+              Word
+            </a>
+          </p>
         </div>
         <ul className="space-y-2.5 text-[15px] text-muted">
-          <li>– One page, single column, with photo</li>
+          <li>– One page, single column</li>
           <li>– Standard section headings</li>
           <li>– Plain, selectable text — no tables or graphics</li>
           <li>– PDF and Word formats</li>

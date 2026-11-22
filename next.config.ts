@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-// Deployed to https://aulad23.github.io/aulad-portfolio/ → basePath "/aulad-portfolio".
-// Set NEXT_PUBLIC_BASE_PATH="" when deploying to a USERNAME.github.io repository.
+// Deployed to https://aulad23.github.io/ (a USERNAME.github.io repo), so basePath is "".
+// Set NEXT_PUBLIC_BASE_PATH (e.g. "/repo-name") only if the site moves to a project repository.
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {

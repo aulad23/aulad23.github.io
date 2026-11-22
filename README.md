@@ -67,7 +67,7 @@ The site updates at https://aulad23.github.io/ about a minute later. `/portfolio
 
 ## Update the resume
 
-The downloadable resume lives in `public/resume/` (PDF and Word). It is generated from `scripts/build_resume.py` (with the photo from `public/images/profile.jpg`), which is laid out for applicant tracking systems: one column, standard headings, plain selectable text, no tables or graphics.
+The downloadable resumes live in `public/resume/` (PDF and Word): `Aulad_Hossain_Resume.*` without a photo (main download) and `Aulad_Hossain_Resume_Photo.*` with one. It is generated from `scripts/build_resume.py` (with the photo from `public/images/profile.jpg`), which is laid out for applicant tracking systems: one column, standard headings, plain selectable text, no tables or graphics.
 
 1. Edit the content at the top of `scripts/build_resume.py` (summary, skills, experience, projects, education).
 2. Run:

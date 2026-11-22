@@ -37,6 +37,7 @@ export const projects: Repo[] = [
     description:
       "An agentic scraping framework for interior design vendors, with one shared base scraper and a scraper per vendor.",
     details: [
+      "Used to scrape 350+ interior design vendor websites",
       "Shared base scraper with an async Playwright engine",
       "Per-category crash recovery and automatic SKU generation",
       "Repeatable refresh runs that produce the same Excel format every time",

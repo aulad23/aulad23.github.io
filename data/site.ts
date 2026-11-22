@@ -20,7 +20,7 @@ export const contact = {
   github: "https://github.com/aulad23",
   linkedin: "https://www.linkedin.com/in/aulad-hossain-663a16391/",
   whatsapp: "https://wa.me/8801408749236",
-  facebook: "https://www.facebook.com/share/19hfG7f4tQ/",
+  facebook: "", // add a Facebook URL here to show it in Contact
 };
 
 // Where the profile photo lives. The "Change photo" dialog uploads the new image to each target:
