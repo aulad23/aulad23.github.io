@@ -66,7 +66,7 @@ export default function Navbar() {
           ))}
           <li>
             <a href="#contact" className="lift rounded-full border border-text px-4 py-1.5 text-[15px] font-semibold">
-              Say hello
+              Let&apos;s talk
             </a>
           </li>
         </ul>

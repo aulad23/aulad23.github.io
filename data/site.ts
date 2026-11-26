@@ -21,6 +21,9 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/aulad-hossain-663a16391/",
   whatsapp: "https://wa.me/8801408749236",
   facebook: "", // add a Facebook URL here to show it in Contact
+  // Web3Forms access key for the contact form (sends messages to the email above).
+  // Public by design — it can only deliver to the inbox it was created for. Get/rotate one at web3forms.com.
+  formKey: "494b7d5c-a04c-4cb7-b81e-7691e08e528d",
 };
 
 // Where the profile photo lives. The "Change photo" dialog uploads the new image to each target:

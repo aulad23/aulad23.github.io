@@ -1,4 +1,6 @@
 import Section from "./Section";
+import AgentFlow from "./AgentFlow";
+import ProjectFlow from "./ProjectFlow";
 import { allReposUrl, projects, repoUrl } from "@/data/repos";
 
 export default function Projects() {
@@ -11,10 +13,24 @@ export default function Projects() {
     >
       <ol className="border-t border-text">
         {projects.map((p, i) => (
-          <li key={p.name} className="grid gap-x-8 gap-y-3 border-b border-line py-8 sm:grid-cols-[48px_1fr_1.5fr]">
-            <span className="font-serif text-xl text-muted">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="font-serif text-[1.85rem] leading-tight">{p.title}</h3>
-            <div>
+          <li
+            key={p.name}
+            className="grid gap-x-8 gap-y-3 border-b border-line py-7 [grid-template-areas:'num'_'title'_'body'_'flow'] sm:grid-cols-[48px_1fr_1.5fr] sm:grid-rows-[auto_1fr] sm:[grid-template-areas:'num_title_body'_'gap_flow_body']"
+          >
+            <span className="font-serif text-xl text-muted [grid-area:num]">{String(i + 1).padStart(2, "0")}</span>
+            <div className="[grid-area:title]">
+              <h3 className="font-serif text-[1.85rem] leading-tight">{p.title}</h3>
+              {p.status && (
+                <p className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-purple">
+                  <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-purple motion-reduce:animate-none" />
+                  {p.status}
+                </p>
+              )}
+            </div>
+            <div className="[grid-area:flow]">
+              {p.agents ? <AgentFlow diagram={p.agents} title={p.title} /> : <ProjectFlow steps={p.flow} title={p.title} />}
+            </div>
+            <div className="[grid-area:body]">
               <p className="leading-relaxed">{p.description}</p>
               <ul className="mt-3 space-y-1.5 text-[15px] leading-relaxed text-muted">
                 {p.details.map((d) => (
