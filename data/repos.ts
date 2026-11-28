@@ -9,6 +9,16 @@ export type FlowStep = string | { group: string; items: string[] };
 // at the same time), stores each answer, then combines them into the output.
 export type AgentDiagram = { input: string; main: string; rounds: string[][]; store: string; output: string };
 
+// For comparison tools: sources are fetched, claims extracted into a table, then each claim is labelled.
+// Values are example data; `odd` marks the source columns that disagree in a Conflict row.
+export type Verdict = "Conflict" | "Consistent" | "Changed over time" | "Not comparable";
+export type CompareDiagram = {
+  topic: string;
+  sources: string[];
+  rows: { label: string; values: string[]; verdict: Verdict; odd?: number[] }[];
+  output: string;
+};
+
 export type Repo = {
   name: string; // GitHub repository name
   private?: boolean;
@@ -18,6 +28,7 @@ export type Repo = {
   details: string[];
   flow: FlowStep[];
   agents?: AgentDiagram; // shown instead of `flow` when present
+  compare?: CompareDiagram; // shown instead of `flow` when present
   language: string;
   tags: string[];
 };
@@ -85,6 +96,38 @@ export const projects: Repo[] = [
     },
     language: "Python",
     tags: ["Multi-agent", "LinkedIn", "Lead generation", "Agent memory"],
+  },
+  {
+    name: "realitygap-ai",
+    status: "In progress",
+    title: "RealityGap AI",
+    description:
+      "An evidence-first platform that compares what 2–5 sources (web pages or PDFs) say about the same topic and shows exactly where they disagree. It never labels a claim true or false — findings go to a person for review.",
+    details: [
+      "Extracts concrete claims such as capacity, weight or dates, keeping the exact excerpt each one came from",
+      "Labels every comparison: conflict, consistent, changed over time, not comparable, unverified or insufficient evidence",
+      "FastAPI backend with a database-backed job worker, SSRF-safe fetching and a Next.js UI; rule-based engine with no paid APIs, covered by 568 backend tests",
+    ],
+    flow: [
+      "2–5 sources (URLs / PDFs)",
+      "Fetch + snapshot",
+      "Extract claims + excerpts",
+      "Match across sources",
+      "Classify",
+      "Findings for review",
+    ],
+    compare: {
+      topic: "Acme Model X",
+      sources: ["Source A", "Source B", "Source C"],
+      rows: [
+        { label: "Battery", values: ["5,000 mAh", "4,500 mAh", "5,000 mAh"], verdict: "Conflict", odd: [1] },
+        { label: "Weight", values: ["189 g", "189 g", ""], verdict: "Consistent" },
+        { label: "Price", values: ["$499 (Jan)", "", "$449 (Jun)"], verdict: "Changed over time" },
+      ],
+      output: "Findings ready for human review",
+    },
+    language: "Python",
+    tags: ["FastAPI", "Next.js", "PDF / HTML extraction", "SQLite / PostgreSQL"],
   },
   {
     name: "MCP-Workspace-Setup",

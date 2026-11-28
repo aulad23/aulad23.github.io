@@ -1,5 +1,6 @@
 import Section from "./Section";
 import AgentFlow from "./AgentFlow";
+import CompareFlow from "./CompareFlow";
 import ProjectFlow from "./ProjectFlow";
 import { allReposUrl, projects, repoUrl } from "@/data/repos";
 
@@ -28,7 +29,13 @@ export default function Projects() {
               )}
             </div>
             <div className="[grid-area:flow]">
-              {p.agents ? <AgentFlow diagram={p.agents} title={p.title} /> : <ProjectFlow steps={p.flow} title={p.title} />}
+              {p.agents ? (
+                <AgentFlow diagram={p.agents} title={p.title} />
+              ) : p.compare ? (
+                <CompareFlow diagram={p.compare} title={p.title} />
+              ) : (
+                <ProjectFlow steps={p.flow} title={p.title} />
+              )}
             </div>
             <div className="[grid-area:body]">
               <p className="leading-relaxed">{p.description}</p>
